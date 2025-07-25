@@ -10,6 +10,6 @@ namespace EquipoProyecto.Data
             : base(options)
         {
         }
-        public DbSet<EquipoProyecto.Models.Mascota> Mascotas { get; set; } = default!;
+       
     }
 }

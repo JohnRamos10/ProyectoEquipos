@@ -21,7 +21,7 @@ namespace ProyectoEquipos.Api.Controllers
         [HttpGet]
         public async Task<IEnumerable<Tarea>> Get()
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
+            using var connection = new SqlConnection(_config.GetConnectionString("AppContext"));
             var tareas = await connection.QueryAsync<Tarea>("SELECT * FROM Tarea");
             return tareas;
         }
@@ -30,29 +30,37 @@ namespace ProyectoEquipos.Api.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Tarea>> Get(int id)
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            var tarea = await connection.QuerySingleOrDefaultAsync<Tarea>(
-                "SELECT * FROM Tarea WHERE id = @id", new { id });
-            if (tarea == null) return NotFound();
-            return tarea;
+           
+                using var connection = new SqlConnection(_config.GetConnectionString("AppContext"));
+                var tarea = await connection.QuerySingleOrDefaultAsync<Tarea>(
+                    "SELECT * FROM Tarea WHERE id = @id", new { id });
+
+                if (tarea == null) return NotFound();
+                return tarea;
+            
+
         }
 
-        // POST: api/Usuarios
+        // POST: api/Tarea
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] Usuario usuario)
+        public async Task<ActionResult> Post([FromBody] Tarea tarea)
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
-            var sql = @"INSERT INTO Usuario (nombre, apellido, cedula, FechaNacimiento)
-                        VALUES (@nombre, @apellido, @cedula, @FechaNacimiento)";
-            await connection.ExecuteAsync(sql, usuario);
-            return Ok();
+           
+                using var connection = new SqlConnection(_config.GetConnectionString("AppContext"));
+                var sql = @"INSERT INTO Tarea (Estado, prioridad, FechaVencimiento, ProyectoId, UsuarioAsignadoId)
+                VALUES (@Estado, @prioridad, @FechaVencimiento, @ProyectoId, @UsuarioAsignadoId)";
+
+                await connection.ExecuteAsync(sql, tarea);
+                return Ok();
+            
+
         }
 
         // PUT: api/Tareas/5
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, [FromBody] Tarea tarea)
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
+            using var connection = new SqlConnection(_config.GetConnectionString("AppContext"));
             var sql = @"UPDATE Tarea SET Estado = @Estado, prioridad = @prioridad, FechaVencimiento = @FechaVencimiento,
                         ProyectoId = @ProyectoId, UsuarioAsignadoId = @UsuarioAsignadoId WHERE id = @id";
             var affected = await connection.ExecuteAsync(sql, new
@@ -72,7 +80,7 @@ namespace ProyectoEquipos.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
-            using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
+            using var connection = new SqlConnection(_config.GetConnectionString("AppContext"));
             var sql = "DELETE FROM Tarea WHERE id = @id";
             var affected = await connection.ExecuteAsync(sql, new { id });
             if (affected == 0) return NotFound();

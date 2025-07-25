@@ -15,6 +15,6 @@ namespace ProyectoEquiposs
         public string nombre { get; set; }
         public string descripcion { get; set; }
         public DateTime fechaProyecto { get; set; }
-        public List<Tarea> Tareas { get; set; }
+        public List<Tarea>? Tareas { get; set; }
     }
 }

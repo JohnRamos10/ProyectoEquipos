@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProyectoEquiposs.Usuario>
+﻿@model IEnumerable<ProyectoEquiposs.Proyecto>
 
 @{
     ViewData["Title"] = "Index";
@@ -19,13 +19,10 @@
                 @Html.DisplayNameFor(model => model.nombre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.apellido)
+                @Html.DisplayNameFor(model => model.descripcion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.cedula)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaNacimiento)
+                @Html.DisplayNameFor(model => model.fechaProyecto)
             </th>
             <th></th>
         </tr>
@@ -40,18 +37,15 @@
                 @Html.DisplayFor(modelItem => item.nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.apellido)
+                @Html.DisplayFor(modelItem => item.descripcion)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.cedula)
+                @Html.DisplayFor(modelItem => item.fechaProyecto)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FechaNacimiento)
-            </td>
-            <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
 }

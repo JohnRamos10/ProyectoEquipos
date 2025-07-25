@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using EquipoProyecto.Data;
+using WebAplicationUTNSeguro.Data;
 
 #nullable disable
 
-namespace EquipoProyecto.Migrations
+namespace WebAplicationUTNSeguro.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20250701161012_v01Zoo")]

@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using EquipoProyecto.Data;
+using EquiposProyectosApi.Consumer;
+using ProyectoEquiposs;
+using static System.Net.WebRequestMethods;
 
 namespace EquipoProyecto
 {
@@ -8,6 +11,10 @@ namespace EquipoProyecto
     {
         public static void Main(string[] args)
         {
+            Crud<Usuario>.EndPoint = "https://localhost:7042/api/Usuarios";
+            Crud<Proyecto>.EndPoint = "https://localhost:7042/api/Proyectoss";
+            Crud<Tarea>.EndPoint = "https://localhost:7042/api/Tareas";
+           
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
@@ -16,7 +23,7 @@ namespace EquipoProyecto
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();

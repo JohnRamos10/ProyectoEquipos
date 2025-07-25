@@ -1,0 +1,53 @@
+﻿@model ProyectoEquiposs.UsuarioLog
+
+@{
+    ViewData["Title"] = "Registro de Cliente";
+}
+
+<h2>Registro de Cliente</h2>
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <ul>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+
+<form method="post" asp-action="Register" asp-controller="Login">
+
+    <div class="form-group">
+        <label asp-for="Nombre"></label>
+        <input asp-for="Nombre" class="form-control" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Correo"></label>
+        <input asp-for="Correo" class="form-control" />
+        <span asp-validation-for="Correo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Clave"></label>
+        <input asp-for="Clave" type="password" class="form-control" />
+        <span asp-validation-for="Clave" class="text-danger"></span>
+    </div>
+    <input type="hidden" asp-for="Rol" value="Cliente" />
+    <button type="submit" class="btn btn-success">Registrar</button>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

@@ -14,6 +14,7 @@ namespace ProyectoEquiposs
         public string nombre { get; set; }
         public string apellido { get; set; }
         public string cedula { get; set; }
+        public string Correo { get; set; }
         public DateTime FechaNacimiento { get; set; }
     }
 }

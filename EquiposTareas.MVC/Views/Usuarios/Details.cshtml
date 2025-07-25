@@ -1,4 +1,4 @@
-﻿@model ProyectoEquiposs.Tarea
+﻿@model ProyectoEquiposs.Usuario
 
 @{
     ViewData["Title"] = "Details";
@@ -7,7 +7,7 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Tarea</h4>
+    <h4>Usuario</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -17,34 +17,28 @@
             @Html.DisplayFor(model => model.id)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Estado)
+            @Html.DisplayNameFor(model => model.nombre)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Estado)
+            @Html.DisplayFor(model => model.nombre)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.prioridad)
+            @Html.DisplayNameFor(model => model.apellido)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.prioridad)
+            @Html.DisplayFor(model => model.apellido)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaVencimiento)
+            @Html.DisplayNameFor(model => model.cedula)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FechaVencimiento)
+            @Html.DisplayFor(model => model.cedula)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ProyectoId)
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ProyectoId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UsuarioAsignadoId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UsuarioAsignadoId)
+            @Html.DisplayFor(model => model.FechaNacimiento)
         </dd>
     </dl>
 </div>

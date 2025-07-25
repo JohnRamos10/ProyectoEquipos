@@ -1,9 +1,16 @@
+using EquiposProyectosApi.Consumer;
+using ProyectoEquiposs;
+
 namespace EquiposTareas.MVC
 {
     public class Program
     {
         public static void Main(string[] args)
+
         {
+            Crud<Usuario>.EndPoint = "https://localhost:7042/api/Usuarios";
+            Crud<Proyecto>.EndPoint = "https://localhost:7042/api/Proyectos";
+            Crud<Tarea>.EndPoint = "https://localhost:7042/api/Tareas";
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.

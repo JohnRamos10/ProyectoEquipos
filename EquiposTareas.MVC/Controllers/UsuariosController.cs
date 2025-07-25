@@ -1,4 +1,5 @@
 ﻿using EquiposProyectosApi.Consumer;
+using EquiposTareas.MVC.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -6,6 +7,7 @@ using ProyectoEquiposs;
 
 namespace EquiposTareas.MVC.Controllers
 {
+    
     public class UsuariosController : Controller
     {// GET: UsuariosController
         public ActionResult Index()
